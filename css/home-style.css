@@ -1,0 +1,130 @@
+:root{
+    font-family: Inter, system-ui, Avenir, Arial, Helvetica, sans-serif;
+}
+
+*,*:before,*:after{
+    box-sizing: border-box;
+}
+
+body{
+    padding:0;
+    margin: 0;
+    background-color: #200a0a;
+}
+
+.container{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.header{
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffc3c3;
+}
+
+header{
+    padding: 0px;
+    position: sticky;
+    top: -60px;
+    background-color:#200a0a ;
+    padding-bottom: 10px;
+}
+  
+.header-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fd7878;
+}
+
+.nav{
+    display: flex;
+    gap: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav_link{
+    list-style-type: none;
+    width: 80px;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 300px;
+    margin-bottom: 30px;
+    color:#ffc3c3;
+    margin-right: 20px;
+    transition: all 0.5s;
+}
+
+.nav_link:hover{
+    color: #3c3636;
+    font-weight: bold;
+}
+
+.contacts-form-block{
+    background: #ffc3c3;
+    border-radius: 24px;
+    padding: 80px 0 ;
+    margin-top: 100px;
+  }
+  
+  .contacts-form{
+    width: 508px;
+    margin: auto;
+  }
+  
+  .contacts-form-control{
+    margin-bottom: 40px;
+  }
+  
+  
+  .contacts-form input{
+    font-size: 24px;
+    line-height: 38px;
+    font-style: 700;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 17px;
+    border-bottom: 1px solid #fff;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .contacts-form input::placeholder{
+    color: #fff;
+  }
+  
+  .contacts-form-button-wrap{
+    margin-top: 16px;
+  }
+  
+  .contacts-from-button{
+    color: #fff;
+    border-color: #fff;
+    width: 100%;
+  }
+  
+  .contacts-form-block .block-title{
+    color: #fff;
+    text-align: center;
+  }
+  
+  .common-button{
+    height: 56px;
+    color: #fd7878;
+    padding: 0 50px;
+    border-radius: 55px;
+    border: 1px solid #fd7878;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
