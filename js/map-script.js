@@ -29,10 +29,12 @@ data.forEach(element => {
     });
 
     popup.on('close', function() {
+        /*
         if (map.getSource('route')) {
             map.removeLayer('route');
             map.removeSource('route');
         }
+        */
     });
 });
 
@@ -55,11 +57,13 @@ geolocate.on('geolocate', function(event) {
 
 
 geolocate.on('trackuserlocationend', () => {
+    /*
     if (map.getSource('route')) {
         map.removeLayer('route');
         map.removeSource('route');
     }
     userCoords = null;
+    */
 });
 
 map.addControl(geolocate);
