@@ -152,7 +152,7 @@ const buttons_settings = {
   }
 }
 
-const buttons_icons_path = '../images/icons/'
+const buttons_icons_path = 'images/icons/'
 
 let isButtonsCreated = false;
 let isPathsCreated = false;
