@@ -119,3 +119,15 @@ body {
 
     z-index: 10;
 }
+
+.popup-image {
+    width: 100px;
+    height: 100px;
+    max-width: 100px; 
+    max-height: 100px;
+}
+
+.popup-description {
+    text-overflow: ellipsis;
+    max-width: 100px;
+}

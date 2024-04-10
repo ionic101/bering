@@ -1,10 +1,20 @@
-function spawn_sight(sight_name, sight_data) {
-  let popup = new mapboxgl.Popup({ offset: popup_offset }).setText(sight_data.description);
+function spawn_sight(sight_id, sight_data) {
+  let popup = new mapboxgl.Popup(popup_settings);
+
+  fetch('popup.html')
+      .then(response => response.text())
+      .then(html => {
+          popup.setHTML(html
+            .replace('!img', sights_images_path + sight_data.img)
+            .replace('!name', sight_data.name)
+            .replace('!description', sight_data.description))
+      });
 
   let marker = document.createElement('div');
-  marker.id = sight_name;
+  marker.id = sight_id;
   marker.className = 'marker';
   marker.style.backgroundImage = `url(${sights_images_path + sight_data.img})`;
+
 
   new mapboxgl.Marker(marker)
       .setLngLat(sight_data.location)
@@ -115,16 +125,21 @@ const geolocate = new mapboxgl.GeolocateControl({
   showUserHeading: true
 });
 
-const popup_offset = 30;
+const popup_settings = {
+    offset: 30
+};
+
 const sights_images_path = 'images/sights/';
 
 const sights_data = {
   'urfu': {
+    name: 'УРФУ',
     img: 'urfu.jpg',
     description: 'УРФУ - уральский федеральный университет',
     location: [60.652661,56.843861]
   },
   'elcin': {
+    name: 'Ельцин центр',
     img: 'elcin.jpg', 
     description: 'Ельцин центр',
     location: [60.591389,56.844811]
