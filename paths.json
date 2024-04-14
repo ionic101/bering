@@ -1,0 +1,17 @@
+[
+    {
+        "id": 0,
+        "name": "Спортивный маршрут",
+        "img": "https://placehold.co/200x100"
+    },
+    {
+        "id": 1,
+        "name": "Культурный маршрут",
+        "img": "https://placehold.co/200x100"
+    },
+    {
+        "id": 2,
+        "name": "Маршрут студента",
+        "img": "https://placehold.co/200x100"
+    }
+]

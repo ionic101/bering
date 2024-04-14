@@ -86,6 +86,14 @@ function remove_paths() {
   document.getElementById('dynamic-container').removeChild(document.getElementById('paths-content'));
 }
 
+function clear_paths_content() {
+  var parent = document.getElementById('paths-content');
+
+  document.querySelectorAll('.path').forEach(element => {
+    parent.removeChild(element);
+  });
+}
+
 
 function spawn_paths() {
   if (isPathsCreated) {
@@ -93,7 +101,7 @@ function spawn_paths() {
     isPathsCreated = false;
   }
   else {
-    spawn_html_block('paths.html');
+    spawn_path_blocks();
     isPathsCreated = true;
   }
 }
@@ -108,13 +116,49 @@ function on_click_out_window() {
 }
 
 
+function spawn_path_blocks() {
+  document.getElementById('dynamic-container').innerHTML = 
+    `<div id="paths-content"></div>`
+  
+
+  fetch('paths.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    data.forEach(path => {
+      let html_block = 
+      `<div id=${path.id} class="path" onclick="show_path('${path.name}', '${path.img}')">
+          <img src=${path.img}>
+          <h3>${path.name}</h3>
+        </div>`;
+      
+      let a = document.getElementById('paths-content').innerHTML;
+      document.getElementById('paths-content').innerHTML = a + html_block;
+    });
+  });
+}
+
+
+function show_path(name, img) {
+  document.getElementById('paths-content').innerHTML = 
+  `<div class="path-about">
+    <h2>${name}</h2>
+    <img src=${img}></img>
+  </div>`;
+}
+
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiaW9uaWMxMDFkZXYiLCJhIjoiY2x1OWxmdWw1MGNsejJxbWs3c3J6aGhrZCJ9.0StK68-J9ebsVUfikK0T5A';
 
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/ionic101dev/clu9s2dk3014m01qsdx000x87',
-  center: [60.652661,56.843861],
-  zoom: 15
+  center: [60.621529,56.837706],
+  zoom: 13
 });
 
 const geolocate = new mapboxgl.GeolocateControl({
@@ -134,15 +178,33 @@ const sights_images_path = 'images/sights/';
 const sights_data = {
   'urfu': {
     name: 'УРФУ',
-    img: 'urfu.jpg',
+    img: 'urfu.png',
     description: 'УРФУ - уральский федеральный университет',
     location: [60.652661,56.843861]
   },
   'elcin': {
     name: 'Ельцин центр',
-    img: 'elcin.jpg', 
+    img: 'elcin.png', 
     description: 'Ельцин центр',
     location: [60.591389,56.844811]
+  },
+  'cirk': {
+    name: 'Цирк',
+    img: 'cirk.png', 
+    description: 'Екатеринбуржский цирк',
+    location: [60.605071,56.825784]
+  },
+  'ugi': {
+    name: 'УГИ',
+    img: 'ugi.png', 
+    description: 'Уральский гуманитарный университет',
+    location: [60.616148,56.840434]
+  },
+  'visockiy': {
+    name: 'Высоцкий',
+    img: 'visockiy.png', 
+    description: 'Самое высокое здание в Екатеринбурге высотой 194 метра, названное в честь Высоцкого В. С.',
+    location: [60.614625,56.835965]
   }
 }
 

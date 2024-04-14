@@ -110,16 +110,6 @@ body {
     cursor: pointer;
 }
 
-#paths-content {
-    position: fixed;
-
-    width: 500px;
-    height: 100%;
-    background-color: white;
-
-    z-index: 10;
-}
-
 .popup-image {
     width: 100px;
     height: 100px;
@@ -130,4 +120,51 @@ body {
 .popup-description {
     text-overflow: ellipsis;
     max-width: 100px;
+}
+
+#paths-content {
+    position: fixed;
+    z-index: 10;
+
+    width: 500px;
+    height: 100%;
+    background-color: white;
+    
+    display: grid;
+    overflow-y: auto;
+}
+
+.path {
+    margin: 30px;
+    padding: 20px;
+
+    background-color: gray;
+    width: 80%;
+    height: 300px;
+
+    display: grid;
+    justify-items: center;
+    cursor: pointer;
+}
+
+.path img {
+    height: 200px;
+    width: auto;
+}
+
+.path h3 {
+    font-size: 30px;
+}
+
+.path-about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    text-align: center;
+}
+
+.path-about img {
+    margin-top: 10px;
+    max-width: 100%;
 }
