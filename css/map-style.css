@@ -163,9 +163,9 @@ body {
 }
 
 .path-about {
-    position: fixed;
-    display: grid;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .path-about img {
@@ -181,7 +181,7 @@ body {
 
 .path-description {
     width: 100%;
-    padding-left: 50px;
+    padding-left: 20px;
     padding-top: 20px;
 }
 
