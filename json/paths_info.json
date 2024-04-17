@@ -1,0 +1,26 @@
+[
+    {
+        "id": "student",
+        "name": "Студенческий маршрут",
+        "img": "images/paths/student.png",
+        "description": "Идеальный маршрут для студентов"
+    },
+    {
+        "id": "modern",
+        "name": "Маршрут 21-ого века",
+        "img": "images/paths/modern.png",
+        "description": "Маршрут подойдет для тех, кто интересуется технологиями"
+    },
+    {
+        "id": "culture",
+        "name": "Культурный маршрут",
+        "img": "images/paths/culture.png",
+        "description": "Для тех, кто интересуется культурой"
+    },
+    {
+        "id": "weekends",
+        "name": "Маршрут на выходные",
+        "img": "images/paths/weekends.png",
+        "description": "Отличный маршрут для времяпровождения с семьей"
+    }
+]   

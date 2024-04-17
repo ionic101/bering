@@ -13,7 +13,11 @@ function spawn_sight(sight_id, sight_data) {
   let marker = document.createElement('div');
   marker.id = sight_id;
   marker.className = 'marker';
-  marker.style.backgroundImage = `url(${sights_images_path + sight_data.img})`;
+
+  if (sight_data.img != undefined) {
+    marker.style.backgroundImage = `url(${sights_images_path + sight_data.img})`;
+  }
+  
 
 
   new mapboxgl.Marker(marker)
@@ -24,9 +28,16 @@ function spawn_sight(sight_id, sight_data) {
 
 
 function spawn_sights() {
-  for (let sight in sights_data) {
-    spawn_sight(sight, sights_data[sight]);
-  }
+  fetch('json/sights.json')
+    .then(response => response.json())
+    .then(data => {
+      for (let sight in data) {
+        spawn_sight(sight, data[sight]);
+      }
+    })
+    .catch(error => {
+      console.error('Ошибка загрузки JSON файла:', error);
+    });
 }
 
 
@@ -77,7 +88,8 @@ function spawn_html_block(html_file_path) {
 
 
 function spawn_profile() {
-  spawn_html_block('window.html')
+  spawn_html_block('window.html');
+  remove_route();
   isPathsCreated = false;
 }
 
@@ -98,6 +110,7 @@ function clear_paths_content() {
 function spawn_paths() {
   if (isPathsCreated) {
     remove_paths();
+    remove_route();
     isPathsCreated = false;
   }
   else {
@@ -119,9 +132,8 @@ function on_click_out_window() {
 function spawn_path_blocks() {
   document.getElementById('dynamic-container').innerHTML = 
     `<div id="paths-content"></div>`
-  
 
-  fetch('paths.json')
+  fetch('json/paths_info.json')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -131,7 +143,7 @@ function spawn_path_blocks() {
   .then(data => {
     data.forEach(path => {
       let html_block = 
-      `<div id=${path.id} class="path" onclick="show_path('${path.name}', '${path.img}')">
+      `<div id=${path.id} class="path" onclick="show_path('${path.id}', '${path.name}', '${path.img}', '${path.description}')">
           <img src=${path.img}>
           <h3>${path.name}</h3>
         </div>`;
@@ -143,13 +155,76 @@ function spawn_path_blocks() {
 }
 
 
-function show_path(name, img) {
+function show_path(id, name, img, description) {
   document.getElementById('paths-content').innerHTML = 
   `<div class="path-about">
-    <h2>${name}</h2>
+    <h3>${name}</h3>
     <img src=${img}></img>
+    <div class="path-description">
+      <h2>Описание</h2>
+      <p>${description}</p>
+    </div>
   </div>`;
+
+  fetch(`json/paths/${id}_path.json`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    displayPath(data);
+  });
 }
+
+
+
+async function displayPath(query) {
+  const data = query.routes[0];
+  const route = data.geometry.coordinates;
+  const geojson = {
+    type: 'Feature',
+    properties: {},
+    geometry: {
+      type: 'LineString',
+      coordinates: route
+    }
+  };
+
+  if (map.getSource('route')) {
+    map.getSource('route').setData(geojson);
+  }
+  else {
+    map.addLayer({
+      id: 'route',
+      type: 'line',
+      source: {
+        type: 'geojson',
+        data: geojson
+      },
+      layout: {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },  
+      paint: {
+        'line-color': '#ff2d00',
+        'line-width': 5,
+        'line-opacity': 0.75
+      }
+    });
+  }
+}
+
+function remove_route() {
+  if (map.getLayer('route')) {
+    map.removeLayer('route');
+  }
+  if (map.getSource('route')) {
+    map.removeSource('route');
+  }
+}
+
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaW9uaWMxMDFkZXYiLCJhIjoiY2x1OWxmdWw1MGNsejJxbWs3c3J6aGhrZCJ9.0StK68-J9ebsVUfikK0T5A';
@@ -174,39 +249,8 @@ const popup_settings = {
 };
 
 const sights_images_path = 'images/sights/';
+const buttons_icons_path = 'images/icons/';
 
-const sights_data = {
-  'urfu': {
-    name: 'УРФУ',
-    img: 'urfu.png',
-    description: 'УРФУ - уральский федеральный университет',
-    location: [60.652661,56.843861]
-  },
-  'elcin': {
-    name: 'Ельцин центр',
-    img: 'elcin.png', 
-    description: 'Ельцин центр',
-    location: [60.591389,56.844811]
-  },
-  'cirk': {
-    name: 'Цирк',
-    img: 'cirk.png', 
-    description: 'Екатеринбуржский цирк',
-    location: [60.605071,56.825784]
-  },
-  'ugi': {
-    name: 'УГИ',
-    img: 'ugi.png', 
-    description: 'Уральский гуманитарный университет',
-    location: [60.616148,56.840434]
-  },
-  'visockiy': {
-    name: 'Высоцкий',
-    img: 'visockiy.png', 
-    description: 'Самое высокое здание в Екатеринбурге высотой 194 метра, названное в честь Высоцкого В. С.',
-    location: [60.614625,56.835965]
-  }
-}
 
 const buttons_settings = {
   "profile-button": {
@@ -228,8 +272,6 @@ const buttons_settings = {
     function: spawn_profile
   }
 }
-
-const buttons_icons_path = 'images/icons/'
 
 let isButtonsCreated = false;
 let isPathsCreated = false;
