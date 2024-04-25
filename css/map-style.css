@@ -196,3 +196,87 @@ body {
     color: black;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.mapboxgl-popup-content {
+    background: none;
+    background-image: url("../images/card/card.png");
+    background-size: cover;
+    border-radius: 3px;
+    box-shadow: none;
+    padding: 10px 10px 15px;
+    pointer-events: auto;
+    position: relative
+    
+}
+
+.popup-content{
+    display:table;
+    height: 250px;
+    width: 200px;
+    padding-top:28px;
+}
+
+.popup-content h3{
+    display:table-header-group;
+    text-align: center;
+    max-width: 10px;
+}
+
+.popup-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+.popup-description{
+    display: block;
+    justify-content: center;
+    text-align: center;
+    max-width:max-content;
+}
+.popup-button-plus{
+    position: absolute;
+    top:13px;
+    left: 13px;
+    background-image: url("../images/card/plus-card.png");
+    cursor: pointer;
+    background-size: cover;
+    height: 27px;
+    width: 27px;
+    border: none;
+    background-color: transparent;
+    border: none;
+}
+
+.mapboxgl-popup-close-button{
+    background-image: url("../images/card/close-card.png");
+    background-color: transparent;
+    background-size: cover;
+    height: 18px;
+    width: 18px;
+    top: 17px;
+    right: 13px;
+}
+
+.popup-button-details{
+    background-image: url("../images/card/details-card.png");
+    background-color: transparent;
+    background-size: cover;   
+    height: 24px;
+    width: 30px;
+    border: none;
+    background-position: center;
+    margin-left: 58px;
+    cursor: pointer;
+}
+
+.popup-button-place{
+    background-image: url("../images/card/place-card.png");
+    background-color: transparent;
+    background-size: cover;   
+    height: 33px;
+    width: 26px;
+    border: none;
+    cursor: pointer;
+}
