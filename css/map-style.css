@@ -1,3 +1,7 @@
+:root{
+    font-family: Inter, system-ui, Avenir, Arial, Helvetica, sans-serif;
+  }
+
 body {
     margin: 0;
     padding: 0;
@@ -49,6 +53,7 @@ body {
     opacity: 1;
 }
 
+
 .menu-button {
     position: fixed;
     bottom: 100px;
@@ -67,7 +72,7 @@ body {
     background-color: white;
 }
 
-.window-bg {
+.profile-bg {
     position: fixed;
     top: 0;
     left: 0;
@@ -77,36 +82,289 @@ body {
     z-index: 100;
 }
 
-.window {
+.block_mini{
+    display: flex;
+}
+
+.block_mini ul{
+    font-size: 20px;
+    color: #e5ebef;
+    list-style-type: none;
+    text-decoration: none;
+    margin-top: 60px;
+    margin-left: -50px;
+    line-height: 40px;
+}
+
+.profile{
+    order: 1;
+    margin-top: 601px;
+    margin-left: -536px;
+    width: 1000px;
+    height: 500px;
+    background-color: transparent;
+}
+
+.image_profile{
+    height: 200px; 
+    width: 200px;
+    margin: 40px;
+    background-color: #d1d9df;
+    border-radius: 50%;
+}
+
+.block_mini_1{
+    display: flex;
+    
+}
+
+.setting{
+    margin-top: 601px;
+    margin-left: -536px;
+    width: 1000px;
+    height: 500px;
+    background-color: transparent;
+    display: flex;
+}
+
+.image_setting{
+    height: 250px; 
+    width: 250px;
+    background-color: #d1d9df;
+    border-radius: 50%;
+     margin-left: 130px;
+     margin-top: 50px;
+}
+
+.form_setting{
+    width: 270px;
+    height: 360px;
+    border: 2px solid black;
+    margin-left: 160px;
+    margin-top: 30px;
+}
+.form_setting p{
+    color: #fff;
+    font-size: large;
+    text-align: center;
+}
+.card{
+    margin-top: 601px;
+    margin-left: -536px;
+    width: 1000px;
+    height: 500px;
+    background-color: transparent;
+}
+
+.block_mini_2{
+    margin-top: 30px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.block-content{
+    width: 600px;
+}
+
+.card1{
+    display: flex;
+    flex-direction: row;
+}
+
+.button-exit1{
+    background-image: url("../images/icons/exit.png");
+    width: 35px;
+    height: 35px;
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 14px;
+    margin-left: -23px;
+}
+
+.card-content{
+    height: 120px;
+    width:  70px;
+    background-color:#d1d9df;
+    float:left; 
+    margin-right:50px;
+    margin-bottom:30px; 
+    overflow:hidden;
+    
+}
+
+.cards-info{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -20px;
+}
+
+.card-text  {
+    color: #fff;
+    margin-left: 10px;
+    font-size: large;
+}
+
+.card-info{
+    height: 290px;
+    width: 210px;
+    background-color:#d1d9df;
+}
+
+.card-text-info{
+    color:#fff;
+    height: 100px;
+    width: 270px;
+}
+
+
+.content_form{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.text{
+    color: #fff;
+}
+
+.form_content_setting input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.button_form{
+    background-image: url(/images/icons/convert.png);
+    opacity: 0.8;
+    height: 15px;
+    width: 15px;
+    background-color: transparent;
+    background-size: cover;
+    border: none;
+    margin-top: 5px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.content_button{
+    display: flex;
+    flex-direction: row;
+}
+
+.image_convert{
+    display: flex;
+    flex-direction: column;
+}
+
+.image_convert p{
+    color:#fff;
+    align-items: center;
+    margin-left: 180px;
+    margin-top: 10px;
+}
+
+.button_image{
+    background-image: url(/images/icons/convert.png);
+    opacity: 0.8;
+    height: 24px;
+    width: 24px;
+    background-color: transparent;
+    background-size: cover;
+    border: none;
+    margin-top: 10px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.button_exit{
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: large;
+    font-family: inherit;
+    margin-left: 400px;
+    margin-top: 30px;
+}
+
+.btn {
+    display: flex;
+}
+
+.btn_ {
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #e5ebef;
+}
+.btn_:hover{
+    color: white;
+}
+
+
+[type="radio"], .profile, .setting, .card {
+    display: none;
+}
+
+#profile:checked ~ .profile,
+#setting:checked ~ .setting,
+#card:checked ~ .card{
+    display: block;
+}
+
+
+
+
+
+.profile-window {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 800px;
-    height: 500px;
+    width: 1000px;
+    height: 600px;
     background-color: rgba(150, 170, 180, 0.8);
     z-index: 101;
 }
 
-.window-header {
+.profile-header {
     position: fixed;
     width: 100%;
     height: 100px;
     background-color: rgba(170, 190, 190, 0.8);
-    color: white;
-
     display: flex;
     align-items: center;
-    justify-content: center;
-
-    z-index: 102;
+    justify-content:baseline;
 }
 
-.window-header a {
-    font-size: 30px;
+.profile-header a {
+    font-size: 20px;
     margin-left: 20px;
     margin-right: 20px;
+    cursor: pointer;
+    color: #d1d9df;
+    transition: all 0.5s;
+}
 
+.profile-header a:hover{
+    font-size: 25px;
+    color: #fff;
+}
+
+
+.button-exit{
+    background-image: url("../images/icons/exit.png");
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+    background-size: cover;
+    border: none;
+    background-color: transparent;
     cursor: pointer;
 }
 
@@ -122,7 +380,7 @@ body {
     max-width: 100px;
 }
 
-#paths-content {
+#paths-menu {
     position: fixed;
     z-index: 10;
 
@@ -246,7 +504,6 @@ body {
     width: 27px;
     border: none;
     background-color: transparent;
-    border: none;
 }
 
 .mapboxgl-popup-close-button{

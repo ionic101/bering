@@ -7,7 +7,6 @@ body{
     margin: 0;
 }
 
-
 .input-img{
     width: 774px;
     height: 100%;
@@ -87,7 +86,7 @@ body{
     justify-content: center;
     padding-right: 200px;
     margin-top: -795px;
-    position: 
+    
 }
 
 .button-off a{
@@ -98,7 +97,3 @@ body{
     font-weight: 600;
     line-height: 20px;
 }
-
-
-
-

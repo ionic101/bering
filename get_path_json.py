@@ -21,12 +21,16 @@ access_token = 'pk.eyJ1IjoiaW9uaWMxMDFkZXYiLCJhIjoiY2x1OWxmdWw1MGNsejJxbWs3c3J6a
 json_file_path = 'json/paths/test_path.json'
 coords = [
     [
-      60.608949,
-      56.844413
+      60.591389,
+      56.844811
     ],
     [
-      60.605071,
-      56.825784
+      60.652661,
+      56.843861
+    ],
+    [
+      60.616148,
+      56.840434
     ]
 ]
 
