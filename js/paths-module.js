@@ -62,7 +62,7 @@ export function getFormattedTime(timeInSeconds) {
 
 //TO DO
 export function getFormattedDistance(distanceInMetres) {
-    return String(distanceInMetres);
+    return String(Math.floor(distanceInMetres));
 }
 
 function getHtmlPathBlockInfo(pathInfo, pathData) {
