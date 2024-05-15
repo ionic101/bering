@@ -5,7 +5,7 @@ function getHtmlProfile() {
               <div class="profile-bg"></div>
               <div class="profile-window">
                   <div class="profile-header">
-                    <a href="./map.html"> <button class="button-exit"></button></a>
+                    <button class="button-exit"></button>
                     <input type="radio" name="radio" id="profile" checked >
                     <input type="radio" name="radio" id="setting">
                     <input type="radio" name="radio" id="card">
@@ -113,6 +113,7 @@ function getHtmlProfile() {
 export function spawnProfile() {
     document.getElementById('dynamic-container').innerHTML = getHtmlProfile();
     addEventOnClickHtmlClass('profile-bg', removeProfile);
+    addEventOnClickHtmlClass('button-exit', removeProfile);
 
     removePathOnMap();
     isPathsCreated = false;

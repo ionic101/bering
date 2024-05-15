@@ -1,3 +1,5 @@
+import { buildPathToSight } from "./user-geo-module.js";
+
 export function spawnSightPopups() {
     fetch('json/sights.json')
       .then(response => {
@@ -14,15 +16,16 @@ export function spawnSightPopups() {
 }
 
 function getHtmlSightPopup(sightData) {
-    return `<div class="popup-content">
-                <image class="popup-image" src="${sightData.img}"></image>
-                <h3>${sightData.name}</h3>
-                <p class="popup-description">${sightData.description}</p>
-                <button class="popup-button-plus"></button>
-                <button class="popup-button-place"></button>
-                <button class="popup-button-details"></button>
-            </div>`;
+  return `<div class="popup-content">
+              <image class="popup-image" src="${sightData.img}"></image>
+              <h3>${sightData.name}</h3>
+              <p class="popup-description">${sightData.description}</p>
+              <button class="popup-button-plus"></button>
+              <button class="popup-button-place"></button>
+              <button class="popup-button-details"></button>
+          </div>`;
 }
+
 
 export function spawnSightPopup(sightID, sightData) {
     const popupSettings = {
@@ -35,6 +38,19 @@ export function spawnSightPopup(sightID, sightData) {
     sightMarker.id = sightID;
     sightMarker.className = 'marker';
     sightMarker.style.backgroundImage = `url(${sightData.img})`;
+
+    sightPopup.once('open', () => {
+      const popupContent = sightPopup.getElement();
+      const placeButton = popupContent.querySelector('.popup-button-place');
+      placeButton.addEventListener('click', () => buildPathToSight(sightData.location));
+    });
+
+    sightPopup.on('close', () => {
+      if (map.getSource('route') && map.getLayer('route')) {
+        map.removeLayer('route');
+        map.removeSource('route');
+      }
+    })
     
     new mapboxgl.Marker(sightMarker)
         .setLngLat(sightData.location)

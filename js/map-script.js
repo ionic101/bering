@@ -39,6 +39,20 @@ const geolocate = new mapboxgl.GeolocateControl({
 });
 
 map.addControl(geolocate);
+
+map.on('load', function() {
+  geolocate.on('geolocate', function(event) {
+      window.userGeo = event.coords;
+  });
+
+  geolocate.on('error', function(event) {
+    window.userGeo = undefined;
+  });
+});
+
+window.userGeo = undefined;
+
+
 spawnSightPopups();
 
 addEventOnClickHtmlID('main-menu-button', menuButtonSwitcher);
