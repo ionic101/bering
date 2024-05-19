@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import sightsRoute from "./routes/sightsRoute.js";
+import pathsRoute from "./routes/pathsRoute.js";
 import cors from "cors";
 
 
@@ -30,5 +31,6 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/sights', sightsRoute);
+app.use('/paths', pathsRoute);
 
 startServer();
