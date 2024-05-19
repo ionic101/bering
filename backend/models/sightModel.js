@@ -22,13 +22,13 @@ const sightSchema = mongoose.Schema(
                     validator: function (data) {
                         return data.length === 2;
                     },
-                    message: props => `${props.value} must contain exactly two numbers [longitude, latitude]`
+                    message: 'Array must contain exactly two numbers [longitude, latitude]'
                 },
                 {
                     validator: function (data) {
                         return data[0] >= -90 && data[0] <= 90 && data[1] >= -180 && data[1] <= 180;
                     },
-                    message: props => `${props.value} must contain valid latitude and longitude values`
+                    message: 'Array must contain valid latitude and longitude values'
                 }
             ]
         }

@@ -2,17 +2,12 @@ import mongoose from 'mongoose';
 
 const pathSchema = mongoose.Schema(
     {
-        info: {
-            type: {
-                name: {
-                    type: String,
-                    required: true
-                },
-                img: {
-                    type: String,
-                    required: true
-                }
-            },
+        name: {
+            type: String,
+            required: true
+        },
+        img: {
+            type: String,
             required: true
         },
         path: {
@@ -39,7 +34,6 @@ const pathSchema = mongoose.Schema(
                 {
                     validator: function (data) {
                         for (const coords of data) {
-                            console.log(coords);
                             if (coords[0] < -90 || coords[0] > 90 || coords[1] < -180 || coords[1] > 180)
                                 return false;
                         }

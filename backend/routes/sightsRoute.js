@@ -3,15 +3,6 @@ import { sightModel } from "../models/sightModel.js";
 
 const sightsRoute = express.Router();
 
-
-const validateSightData = (req, res, next) => {
-    const { name, img, description, location } = req.body;
-    if (!name || !img || !description || !location) {
-        return res.status(400).send({ message: 'The following required fields are required: name, img, description, location' });
-    }
-    next();
-};
-
 sightsRoute.get('/', async (req, res) => {
     try {
         const result = await sightModel.find({});
@@ -34,7 +25,7 @@ sightsRoute.get('/:id', async (req, res) => {
     }
 });
 
-sightsRoute.post('/', validateSightData, async (req, res) => {
+sightsRoute.post('/', async (req, res) => {
     try {
         const result = await sightModel.create(req.body);
         res.status(201).send(result);
@@ -43,7 +34,7 @@ sightsRoute.post('/', validateSightData, async (req, res) => {
     }
 });
 
-sightsRoute.put('/:id', validateSightData, async (req, res) => {
+sightsRoute.put('/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const result = await sightModel.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });

@@ -3,7 +3,6 @@ import { pathModel } from "../models/pathModel.js";
 
 const pathsRoute = express.Router();
 
-
 pathsRoute.get('/', async (req, res) => {
     try {
         const result = await pathModel.find({});
