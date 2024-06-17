@@ -1,0 +1,450 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: Sight, Path and User API
+  description: API для управления достопримечательностями, маршрутами и пользователями
+
+host: 'localhost:3000'
+basePath: '/api'
+
+schemes:
+  - 'http'
+
+paths:
+  /sights:
+    get:
+      summary: Получить все достопримечательности
+      responses:
+        200:
+          description: Список всех достопримечательностей
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Sight'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Создать новую достопримечательность
+      parameters:
+        - in: body
+          name: sight
+          description: Объект достопримечательности
+          required: true
+          schema:
+            $ref: '#/definitions/SightInput'
+      responses:
+        201:
+          description: Достопримечательность создана
+          schema:
+            $ref: '#/definitions/Sight'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+  
+  /sights/{id}:
+    get:
+      summary: Получить достопримечательность по ID
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: ID достопримечательности
+      responses:
+        200:
+          description: Информация о достопримечательности
+          schema:
+            $ref: '#/definitions/Sight'
+        404:
+          description: Достопримечательность не найдена
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      summary: Обновить достопримечательность по ID
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: ID достопримечательности
+        - in: body
+          name: sight
+          description: Объект достопримечательности с обновленными данными
+          required: true
+          schema:
+            $ref: '#/definitions/SightInput'
+      responses:
+        200:
+          description: Достопримечательность обновлена
+          schema:
+            $ref: '#/definitions/Sight'
+        404:
+          description: Достопримечательность не найдена
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      summary: Удалить достопримечательность по ID
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: ID достопримечательности
+      responses:
+        200:
+          description: Достопримечательность успешно удалена
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: 'Sight {id} successfully deleted'
+        404:
+          description: Достопримечательность не найдена
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+  
+  /paths:
+    get:
+      summary: Получить все маршруты
+      responses:
+        200:
+          description: Список всех маршрутов
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Path'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Создать новый маршрут
+      parameters:
+        - in: body
+          name: path
+          description: Объект маршрута
+          required: true
+          schema:
+            $ref: '#/definitions/PathInput'
+      responses:
+        201:
+          description: Маршрут создан
+          schema:
+            $ref: '#/definitions/Path'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+  
+  /paths/{id}:
+    get:
+      summary: Получить маршрут по ID
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: ID маршрута
+      responses:
+        200:
+          description: Информация о маршруте
+          schema:
+            $ref: '#/definitions/Path'
+        404:
+          description: Маршрут не найден
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      summary: Обновить маршрут по ID
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: ID маршрута
+        - in: body
+          name: path
+          description: Объект маршрута с обновленными данными
+          required: true
+          schema:
+            $ref: '#/definitions/PathInput'
+      responses:
+        200:
+          description: Маршрут обновлен
+          schema:
+            $ref: '#/definitions/Path'
+        404:
+          description: Маршрут не найден
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      summary: Удалить маршрут по ID
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: ID маршрута
+      responses:
+        200:
+          description: Маршрут успешно удален
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: 'Path {id} successfully deleted'
+        404:
+          description: Маршрут не найден
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+
+  /users:
+    post:
+      summary: Создать нового пользователя
+      parameters:
+        - in: body
+          name: user
+          description: Объект пользователя
+          required: true
+          schema:
+            $ref: '#/definitions/UserInput'
+      responses:
+        201:
+          description: Пользователь создан
+          schema:
+            $ref: '#/definitions/User'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+
+  /users/{id}:
+    get:
+      summary: Получить пользователя по ID
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: ID пользователя
+      responses:
+        200:
+          description: Информация о пользователе
+          schema:
+            $ref: '#/definitions/User'
+        404:
+          description: Пользователь не найден
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      summary: Обновить пользователя по ID
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: ID пользователя
+        - in: body
+          name: user
+          description: Объект пользователя с обновленными данными
+          required: true
+          schema:
+            $ref: '#/definitions/UserInput'
+      responses:
+        200:
+          description: Пользователь обновлен
+          schema:
+            $ref: '#/definitions/User'
+        404:
+          description: Пользователь не найден
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      summary: Удалить пользователя по ID
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: ID пользователя
+      responses:
+        200:
+          description: Пользователь успешно удален
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: 'User with id: "{id}" successfully deleted'
+        404:
+          description: Пользователь не найден
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+
+  /users/{id}/cards:
+    get:
+      summary: Получить все карточки пользователя
+      parameters:
+        - in: path
+          name: id
+          type: string
+          required: true
+          description: ID пользователя
+      responses:
+        200:
+          description: Список всех карточек пользователя
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        500:
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/Error'
+
+definitions:
+  Sight:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      img:
+        type: string
+      description:
+        type: string
+      location:
+        type: array
+        items:
+          type: number
+
+  SightInput:
+    type: object
+    properties:
+      name:
+        type: string
+      img:
+        type: string
+      description:
+        type: string
+      location:
+        type: array
+        items:
+          type: number
+    required:
+      - name
+      - img
+      - description
+      - location
+
+  Path:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      img:
+        type: string
+      path:
+        type: array
+        items:
+          type: array
+          items:
+            type: number
+
+  PathInput:
+    type: object
+    properties:
+      name:
+        type: string
+      img:
+        type: string
+      path:
+        type: array
+        items:
+          type: array
+          items:
+            type: number
+    required:
+      - name
+      - img
+      - path
+
+  User:
+    type: object
+    properties:
+      id:
+        type: string
+      nickname:
+        type: string
+      mail:
+        type: string
+      dateBirth:
+        type: string
+      cards:
+        type: object
+
+  UserInput:
+    type: object
+    properties:
+      nickname:
+        type: string
+      mail:
+        type: string
+      dateBirth:
+        type: string
+      cards:
+        type: object
+    required:
+      - nickname
+      - mail
+      - dateBirth
+
+  Error:
+    type: object
+    properties:
+      message:
+        type: string
