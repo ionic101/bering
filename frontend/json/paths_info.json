@@ -22,11 +22,5 @@
         "name": "Маршрут на выходные",
         "img": "images/paths/weekends.png",
         "description": "Отличный маршрут для времяпровождения с семьей"
-    },
-    {
-        "id": "literal_quartal",
-        "name": "Литературный квартал",
-        "img": "images/paths/weekends.png",
-        "description": "Литературный квартал"
     }
 ]   

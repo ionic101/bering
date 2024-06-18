@@ -12,13 +12,12 @@ function getHtmlProfile() {
 
                     <div class="btn">
                         <label for="profile" class="btn_">Профиль</label>
-                        <label for="setting" class="btn_">Настройки</label>
                         <label for="card" class="btn_">Карточки</label>
                     </div>
 
                     <div class="profile">
                     <div class="block_mini">
-                    <img src="images/icons/people.png" class = "image_profile" >
+                    <img src="images/icons/profile.png" class = "image_profile" >
                     <ul>
                         <li>Имя:</li>
                         <li>Дата рождения:</li>
@@ -67,7 +66,7 @@ function getHtmlProfile() {
                                 </div>
                             </div>
                             <div class="image_convert">
-                                <img src="images/icons/people.png" class = "image_setting" >
+                                <img src="images/icons/profile.png" class = "image_setting" >
                                 <div class= "content_button">
                                     <p>Изменить фото</p>
                                     <button class="button_image"></button>
@@ -96,6 +95,16 @@ function getHtmlProfile() {
                                 <div class="card-content"></div>
                                 <div class="card-content"></div>
                             </div>
+
+                            <div class="block-content-phone">
+                                <div class="card-content"></div>
+                                <div class="card-content"></div>
+                                <div class="card-content"></div>
+                                <div class="card-content"></div>
+                                <div class="card-content"></div>
+                                <div class="card-content"></div>
+                            </div>
+
                             <div class = "cards-info">
                                 <div class="card1">
                                     <a href="./map.html"> <button class="button-exit1"></button></a>

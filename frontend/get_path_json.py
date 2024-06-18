@@ -18,44 +18,21 @@ def save_json(data):
 
 
 access_token = 'pk.eyJ1IjoiaW9uaWMxMDFkZXYiLCJhIjoiY2x1OWxmdWw1MGNsejJxbWs3c3J6aGhrZCJ9.0StK68-J9ebsVUfikK0T5A'
-json_file_path = 'test_path.json'
+json_file_path = 'json/paths/test_path.json'
 coords = [
     [
-      60.611174,
-      56.845229
+      60.591389,
+      56.844811
     ],
     [
-      60.609771,
-      56.847468
+      60.652661,
+      56.843861
     ],
     [
-      60.606096,
-      56.846464
-    ],
-    [
-      60.606635,
-      56.844407
-    ],
-    [
-      60.606889,
-      56.842743
-    ],
-    [
-      60.606889,
-      56.842443
-    ],
-    [
-      60.606700,
-      56.842450
-    ],
-    [
-      60.607455,
-      56.843457
+      60.616148,
+      56.840434
     ]
-
 ]
-
-
 
 request = requests.get(get_query()).text
 save_json(request)

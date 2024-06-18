@@ -4,74 +4,99 @@
 <head>
   <title>Bering</title>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/home-style.css">
 </head>
 <body >
-  <header class="header-container">
-    <a href="#"  class="logo">
-      <img src='images/icons/logo.png' width="115" height="95">
-    </a>
-    <nav class="navbar">
-      <ul class="menu">
-        <li class="menu-item"><a href="input.html">Вход</a></li>
-      </ul>
-    </nav>
+  <header class="navbar">
+    <div class="nav">
+        <a href="#" class="logo"><img src="./images/icons/logo.png"  width = 115px; height = 95px;  alt="logo site"></a>
+        <a href="input.html" class="input">Вход</a>
+    </div>
   </header>
 
   <section class="button-content">
-    <img src="images/icons/to.png" style="height: 30px; width: 40px;">
+    <img src="images/icons/to.png"  id="icons">
     <p style="margin-top:-11px; margin-left: 10px;">Начни сейчас</p>
     <a href="map.html"><button class="button1"></button></a>
   </section>
 
-  <section class = "main-container" >
-    <div class="main-content" id="main">
-      <h1 class="main-content-h1">Bering</h1>
-      <p class="main-content-p" >Наш сайт предоставляет возможность искать и создавать маршруты по достопримечательностям. 
-        Вы можете легко найти интересные места для посещения, а затем спланировать оптимальный маршрут, чтобы максимально насладиться вашим путешествием.</p>
-      <a href="map.html"><button class="button">Перейти на карту</button></a>
-      </div>
-  </section>
-
-  <section class = "information1 container">
-    <div class="information1-content">
-      <img src="images/icons/symbol.png" style="width: 63px; height: 66px;">
-      <div>
-        <h2 class="h2">Поиск и создание маршрутов</h2>
-      <ul>
-        <li >Используйте функцию поиска, чтобы найти интересные достопримечательности.</li>
-        <li>Добавляйте выбранные места в свой маршрут, указывая порядок следования.</li>
-      </ul>
-      </div>
-      <img src="images/cat.jpg" class="img">
+  <section class="main" id="main">
+    <div class="main-content">
+        <h1>Bering</h1>
+        <p>Наш сайт предоставляет возможность искать и создавать маршруты по достопримечательностям. Вы можете легко найти интересные места для посещения, а затем спланировать оптимальный маршрут, чтобы максимально насладиться вашим путешествием.</p>
+        <a href="map.html"><button class="button">Перейти на карту</button></a>
     </div>
   </section>
 
-  <section class = "information2 container">
-    <div class="information1-content">
-      <img src="images/cat.jpg" class="img" style="padding-right: 30px;">
-      <img src="images/icons/symbol.png" style="width: 63px; height: 66px;">
-      <div>
-        <h2 class="h2">Коллекционирование карточек</h2>
-      <ul>
-        <li >После посещения каждой достопримечательности добавляйте ее карточку в свою коллекцию.</li>
-        <li>Изучайте информацию о каждом месте и сохраняйте интересные факты.</li>
-      </ul>
-      </div>
+  <section class="information1">
+    <div class="informatoin1-content">
+        <img src="images/icons/symbol.png" class="content-img">
+        <div class="content-text">
+            <h2>Поиск и создание маршрутов</h2>
+            <ul>
+                <li>Используйте функцию поиска, чтобы найти интересные достопримечательности.</li>
+                <li>Добавляйте выбранные места в свой маршрут, указывая порядок следования.</li>
+            </ul>
+        </div>
+        <img src="images/cat.jpg" class="img">
     </div>
   </section>
 
-  <section class = "information1 container">
-    <div class="information1-content">
-      <img src="images/icons/symbol.png" style="width: 63px; height: 66px;">
-      <div>
-        <h2 class="h2">Получение достижений</h2>
-      <ul>
-        <li >За исследование новых мест и завершение маршрутов вы будете получать достижения.</li>
-        <li>Собирайте все награды и отслеживайте свой прогресс.</li>
-      </ul>
-      </div>
+  <section class="information1-phone">
+    <div class="informatoin1-content">
       <img src="images/cat.jpg" class="img">
+        <div class="content-text">
+          <img src="images/icons/symbol.png" class="content-img">
+            <h2>Поиск и создание маршрутов</h2>
+            <ul>
+                <li>Используйте функцию поиска, чтобы найти интересные достопримечательности.</li>
+                <li>Добавляйте выбранные места в свой маршрут, указывая порядок следования.</li>
+            </ul>
+        </div>
+        
+    </div>
+  </section>
+
+  <section class="information2">
+    <div class="informatoin1-content">
+        <img src="images/cat.jpg" class="img" id="content-2-img" >
+        <img src="images/icons/symbol.png" class="content-img">
+        <div class="content-text">
+            <h2>Коллекционирование карточек</h2>
+            <ul>
+                <li >После посещения каждой достопримечательности добавляйте ее карточку в свою коллекцию.</li>
+                <li>Изучайте информацию о каждом месте и сохраняйте интересные факты.</li>
+            </ul>
+        </div>
+    </div>
+  </section>
+
+  <section class="information1">
+    <div class="informatoin1-content">
+        <img src="images/icons/symbol.png" class="content-img">
+        <div class="content-text">
+            <h2>Получение достижений</h2>
+            <ul>
+                <li>За исследование новых мест и завершение маршрутов вы будете получать достижения.</li>
+                <li>Собирайте все награды и отслеживайте свой прогресс.</li>
+            </ul>
+        </div>
+        <img src="images/cat.jpg" class="img">
+    </div>
+  </section>
+
+  <section class="information1-phone">
+    <div class="informatoin1-content">
+      <img src="images/cat.jpg" class="img">
+        <div class="content-text">
+          <img src="images/icons/symbol.png" class="content-img">
+            <h2>Получение достижений</h2>
+            <ul>
+              <li>За исследование новых мест и завершение маршрутов вы будете получать достижения.</li>
+              <li>Собирайте все награды и отслеживайте свой прогресс.</li>
+            </ul>
+        </div>
     </div>
   </section>
   

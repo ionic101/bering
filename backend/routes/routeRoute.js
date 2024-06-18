@@ -12,7 +12,7 @@ routeRoute.get('/:coords', async (req, res) => {
     const result = await query.json();
 
     if (result.code == 'Ok')
-        res.status(200).json(result.routes[0].geometry.coordinates);
+        res.status(200).send(result.routes[0].geometry.coordinates);
     else
         res.status(400).send(result.message);
 })

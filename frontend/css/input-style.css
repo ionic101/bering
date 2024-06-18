@@ -1,29 +1,54 @@
 :root{
     font-family: Inter, system-ui, Avenir, Arial, Helvetica, sans-serif;
-}
+  }
 
 body{
-    padding: 0;
-    margin: 0;
-}
-
-.input-img{
-    height: 1000px;
-    width: auto;
+    margin: 0px;
 }
 
 .input{
-    display: flex;
+    display: flex ;
+    height: 100dvh;
+}
+
+.input-logo{
+    background-color: #829dac;
+    width: 50%;
+}
+
+.logo{
+    margin-top: 15%;
+    width: 600px;
+    height: 500px;
+    margin-left: 10%;
+}
+
+.button-close{
+    background-image: url("/bering-main/frontend/images/card/close-card.png");
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    background-color: transparent;
+    position: absolute;
+    border: none;
+    margin: 10px;
+    transition: all 0.5s;
+}
+
+.button-close:hover{
+    width: 30px;
+    height: 30px;
+}
+
+.input-content{
+    width: 50%;
+    padding-right: 30px;
 }
 
 .block-title{
     margin-top: 214px;
     font-size: 30px;
     margin-left: 30px;
-}
-
-.contacts-form{
-    margin-top:22px;
 }
 
 .contacts-form-control{
@@ -44,7 +69,7 @@ body{
     border-bottom: 1px solid #fff;
     width: 100%;
     box-sizing: border-box;
-  }
+}
 
 .contacts-form-block{
     width: 600px;
@@ -52,7 +77,18 @@ body{
 
 .contacts-form-button-wrapper {
     padding-top: 16px;
-  }
+    display: flex;
+    justify-content: space-between;
+}
+
+.contacts-form-button-wrapper p{
+    color: #829DAC;
+    transition: all 0.4s;
+}
+
+.contacts-form-button-wrapper p:hover{
+    font-size: 17px;
+}
   
 .contacts-form-button {
     color: #fff;
@@ -75,11 +111,11 @@ body{
     align-items: center;
     gap: 8px;
     margin-left: 30px; 
-    transition: all 0.5s;
+    transition: all 0.4s;
 }
 
 .button:hover{
-    padding: 0px 55px;
+    border: 4px solid #fff;
 }
 
 .button-off{
@@ -96,4 +132,33 @@ body{
     font-size: 15px;
     font-weight: 600;
     line-height: 20px;
+}
+
+
+@media (max-width: 400px){
+    .input-logo{
+        display: none;
+    }
+
+    .block-title{
+        width: 190px;
+    }
+    
+    .input-content{
+        width: 100%;
+    }
+
+    .button{
+        font-size: 15px;
+        padding: 0 30px;
+    }
+
+    .contacts-form-button-wrapper p{
+        font-size: 15px;
+        padding-top: 3px;
+    }
+
+    .contacts-form-button-wrapper p:hover {
+        font-size: 16px;
+    }
 }

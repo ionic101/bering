@@ -1,17 +1,18 @@
 async function getRouteToSight(userCoords, sightLocation) {
     const query = await fetch(
-      `http://localhost:8000/route/${userCoords[0]},${userCoords[1]};${sightLocation[0]},${sightLocation[1]}`,
+      `https://api.mapbox.com/directions/v5/mapbox/walking/${userCoords[0]},${userCoords[1]};${sightLocation[0]},${sightLocation[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
       { method: 'GET' }
     );
-    
-    const result = await query.json();
 
+    const json = await query.json();
+    const data = json.routes[0];
+    const route = data.geometry.coordinates;
     const geojson = {
       type: 'Feature',
       properties: {},
       geometry: {
         type: 'LineString',
-        coordinates: result
+        coordinates: route
       }
     };
 

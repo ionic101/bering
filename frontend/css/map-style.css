@@ -69,7 +69,7 @@ body {
     border: none;
     cursor: pointer;
 
-    background-color: white;
+    background-color:#A2BDCE;
 }
 
 .profile-bg {
@@ -91,26 +91,27 @@ body {
     color: #e5ebef;
     list-style-type: none;
     text-decoration: none;
-    margin-top: 60px;
-    margin-left: -50px;
+    margin-top: 70px;
     line-height: 40px;
+    padding:0;
 }
 
 .profile{
     order: 1;
     margin-top: 601px;
-    margin-left: -536px;
+    margin-left: -360px;
     width: 1000px;
-    height: 500px;
+    height: 495px;
     background-color: transparent;
 }
 
 .image_profile{
     height: 200px; 
     width: 200px;
-    margin: 40px;
+    margin: 50px;
     background-color: #d1d9df;
     border-radius: 50%;
+    background-size: cover;
 }
 
 .block_mini_1{
@@ -120,9 +121,9 @@ body {
 
 .setting{
     margin-top: 601px;
-    margin-left: -536px;
+    margin-left: -495px;
     width: 1000px;
-    height: 500px;
+    height: 495px;
     background-color: transparent;
     display: flex;
 }
@@ -150,9 +151,9 @@ body {
 }
 .card{
     margin-top: 601px;
-    margin-left: -536px;
+    margin-left: -350px;
     width: 1000px;
-    height: 500px;
+    height: 495px;
     background-color: transparent;
 }
 
@@ -237,10 +238,10 @@ body {
 }
 
 .button_form{
-    background-image: url(/images/icons/convert.png);
+    background-image: url(../images/icons/convert.png);
     opacity: 0.8;
-    height: 15px;
-    width: 15px;
+    height: 16px;
+    width: 16px;
     background-color: transparent;
     background-size: cover;
     border: none;
@@ -267,7 +268,7 @@ body {
 }
 
 .button_image{
-    background-image: url(/images/icons/convert.png);
+    background-image: url(../images/icons/convert.png);
     opacity: 0.8;
     height: 24px;
     width: 24px;
@@ -378,6 +379,7 @@ body {
 .popup-description {
     text-overflow: ellipsis;
     max-width: 100px;
+    
 }
 
 #paths-menu {
@@ -536,4 +538,126 @@ body {
     width: 26px;
     border: none;
     cursor: pointer;
+}
+
+.block-content-phone{
+    display: none;
+}
+
+@media (max-width: 400px){
+    #paths-menu {
+        width: 60%;
+    }
+
+    .path{
+        height: 200px;
+    }
+
+    .path h3{
+        font-size: 16px;
+    }
+
+    .profile-window{
+        width: 300px;
+    }
+
+    .button-exit{
+        background-image: url("../images/icons/exit.png");
+        width: 40px;
+        height: 30px;
+        margin-left: 10px;
+        margin-left: 10px;
+        background-size: cover;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        padding-right: 10px;
+    }
+
+    .btn {
+        display: flex;
+        font-size: 14px;
+        gap: 12px;
+    }
+
+    .btn_ {
+        width: 71px;
+        height: 0px;
+    }
+
+    .profile{
+        margin-top: 584px;
+        margin-left: -220px;
+        width: 495px;
+    }
+
+    .block_mini{
+        display:contents;
+    }
+
+    .image_profile{
+        height: 150px; 
+        width: 150px;
+        margin-top: 52px;
+        margin-left: 52px;
+    }
+
+    .block_mini ul{
+        font-size: 19px;
+        margin-top: 0px;
+        line-height: 40px;
+        padding-left: 68px;
+    }
+    .card{
+        margin-left: -412px ;
+        width: 516px;
+    }
+
+    .form_setting{
+        width: 260px;
+        height: 350px;
+        border: 2px solid black;
+        margin-left: 240px;
+        margin-top: 30px;
+    }
+
+    .image_convert{
+        display: none;
+    }
+
+    .block-content {
+        display: none;
+    }
+
+    .block-content-phone {
+        display: block;
+        width: 390px;
+        margin-left: 175px;
+    }
+
+    .block_mini_2{
+        display: grid;
+    }
+
+    .card-content {
+        height: 90px;
+        width: 60px;
+    }
+
+    .cards-info {
+        margin-left: 217px;
+        margin-top: -37px;
+    }
+
+    .card-info {
+        margin-left:-10px ;
+        height: 121px;
+        width: 213px;
+        background-color: #d1d9df;
+    }
+
+    .card-text-info{
+        margin-left: -37px;
+        text-align: center;
+    }
 }
