@@ -11,7 +11,7 @@ export function pathsMenuSwitcher() {
 }
 
 function getHtmlPathBlockMenu(pathInfo) {
-    return `<div id=${pathInfo.id}
+    return `<div id=${pathInfo._id}
             class="path">
                 <img src=${pathInfo.img}>
                 <h3>${pathInfo.name}</h3>
@@ -25,15 +25,15 @@ function spawnPathBlocksMenu(fileData) {
 }
 
 function addEventOnClickToPathBlocksMenu(fileData) {
-    fileData.forEach(pathInfo => {
-        const pathBlock = document.getElementById(pathInfo.id);
+    fileData.forEach(pathData => {
+        const pathBlock = document.getElementById(pathData._id);
 
         if (pathBlock) {
             pathBlock.addEventListener('click',
-                () => spawnPathBlockInfo(pathInfo));
+                () => spawnPathBlockInfo(pathData));
         }
         else {
-            throw new Error(`The path block with ID: "${pathInfo.id}" was not found`);
+            throw new Error(`The path block with ID: "${pathData._id}" was not found`);
         }
     });
 }
@@ -65,29 +65,29 @@ export function getFormattedDistance(distanceInMetres) {
 
 function getHtmlPathBlockInfo(pathInfo, pathData) {
     return `<div class="path-about">
-                <h3>${pathInfo.name}</h3>
-                <img src=${pathInfo.img}></img>
+                <h3>${pathData.name}</h3>
+                <img src=${pathData.img}></img>
                 <div class="path-description">
                     <p>Длина пути: ${getFormattedDistance(pathData.distance)} метров</p>
                     <p>Время в пути: ${getFormattedTime(pathData.duration)} минут</p>
                     <h2>Описание</h2>
-                    <p>${pathInfo.description}</p>
+                    <p>${pathData.description}</p>
                 </div>
             </div>`;
 }
 
-function spawnPathBlockInfo(pathInfo) {
-    fetch(`json/paths/${pathInfo.id}_path.json`)
+function spawnPathBlockInfo(pathData) {
+    fetch(`json/paths/${pathData.id}_path.json`)
         .then(response => {
             if (!response.ok) {
-                throw new Error(`The ${pathInfo.id}_path.json file could not be loaded`);
+                throw new Error(`The ${pathData.id}_path.json file could not be loaded`);
             }
             return response.json();
         })
         .then(fileData => {
             const pathData = fileData.routes[0];
-            displayPathOnMap(pathData);
-            document.getElementById('paths-menu').innerHTML = getHtmlPathBlockInfo(pathInfo, pathData);
+            displayPathOnMap(pathData.path);
+            document.getElementById('paths-menu').innerHTML = getHtmlPathBlockInfo(pathData, pathData);
         });
 }
 
