@@ -63,7 +63,7 @@ export function getFormattedDistance(distanceInMetres) {
     return String(Math.floor(distanceInMetres));
 }
 
-function getHtmlPathBlockInfo(pathInfo, pathData) {
+function getHtmlPathBlockInfo(pathData) {
     return `<div class="path-about">
                 <h3>${pathData.name}</h3>
                 <img src=${pathData.img}></img>
@@ -77,18 +77,8 @@ function getHtmlPathBlockInfo(pathInfo, pathData) {
 }
 
 function spawnPathBlockInfo(pathData) {
-    fetch(`json/paths/${pathData.id}_path.json`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`The ${pathData.id}_path.json file could not be loaded`);
-            }
-            return response.json();
-        })
-        .then(fileData => {
-            const pathData = fileData.routes[0];
-            displayPathOnMap(pathData.path);
-            document.getElementById('paths-menu').innerHTML = getHtmlPathBlockInfo(pathData, pathData);
-        });
+    displayPathOnMap(pathData.path);
+    document.getElementById('paths-menu').innerHTML = getHtmlPathBlockInfo(pathData);
 }
 
 function getPathObject(pathData) {
@@ -102,7 +92,7 @@ function getPathObject(pathData) {
             properties: {},
             geometry: {
               type: 'LineString',
-              coordinates: pathData.geometry.coordinates
+              coordinates: pathData
             }
           }
         },

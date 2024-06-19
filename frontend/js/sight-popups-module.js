@@ -10,7 +10,6 @@ export function spawnSightPopups() {
       })
       .then(sightData => {
         for (let sightIndex in sightData) {
-          console.log(sightData[sightIndex]);
           spawnSightPopup(sightData[sightIndex]);
         }
       });
