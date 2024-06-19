@@ -6,12 +6,11 @@ function getHtmlProfile() {
               <div class="profile-window">
                   <div class="profile-header">
                     <button class="button-exit"></button>
-                    <input type="radio" name="radio" id="profile" checked >
+                    <input type="radio" name="radio" id="profile"  >
                     <input type="radio" name="radio" id="setting">
-                    <input type="radio" name="radio" id="card">
+                    <input type="radio" name="radio" id="card"checked>
 
                     <div class="btn">
-                        <label for="profile" class="btn_">Профиль</label>
                         <label for="card" class="btn_">Карточки</label>
                     </div>
 

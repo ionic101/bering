@@ -151,7 +151,7 @@ body {
 }
 .card{
     margin-top: 601px;
-    margin-left: -350px;
+    margin-left: -224px;
     width: 1000px;
     height: 495px;
     background-color: transparent;
@@ -563,7 +563,7 @@ body {
 
     .button-exit{
         background-image: url("../images/icons/exit.png");
-        width: 40px;
+        width: 30px;
         height: 30px;
         margin-left: 10px;
         margin-left: 10px;
@@ -609,7 +609,7 @@ body {
         padding-left: 68px;
     }
     .card{
-        margin-left: -412px ;
+        margin-left: -313px ;
         width: 516px;
     }
 

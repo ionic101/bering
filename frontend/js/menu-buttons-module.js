@@ -37,22 +37,22 @@ function removeMenuButtons() {
 }
 
 const BUTTONS_SETTINGS = {
-    "profile-button": {
-      img: "images/icons/profile.png",
-      bottom: "60px",
-      right: "160px",
-      function: spawnProfile
-    },
+    // "profile-button": {
+    //   img: "images/icons/profile.png",
+    //   bottom: "60px",
+    //   right: "160px",
+    //   function: spawnProfile
+    // },
     "paths-button": {
       img: "images/icons/paths.png",
-      bottom: "160px",
+      bottom: "50px",
       right: "120px",
       function: pathsMenuSwitcher
     },
     "cards-button": {
       img: "images/icons/cards.png",
-      bottom: "230px",
-      right: "40px",  
+      bottom: "140px",
+      right: "60px",  
       function: spawnProfile
     }
 }
