@@ -10,6 +10,10 @@ const pathSchema = mongoose.Schema(
             type: String,
             required: true
         },
+        description: {
+            type: String,
+            required: true
+        },
         path: {
             type: [[Number]],
             required: true,

@@ -42,7 +42,7 @@ function spawnPathsMenu() {
     document.getElementById('dynamic-container').innerHTML = 
       `<div id="paths-menu"></div>`;
     
-    fetch('json/paths_info.json')
+    fetch('http://89.232.170.133:8000/paths')
         .then(response => {
             if (!response.ok) {
                 throw new Error('The paths_info.json file could not be loaded');
@@ -55,12 +55,10 @@ function spawnPathsMenu() {
         });
 }
 
-//TO DO
 export function getFormattedTime(timeInSeconds) {
     return String(Math.floor(timeInSeconds / 60));
 }
 
-//TO DO
 export function getFormattedDistance(distanceInMetres) {
     return String(Math.floor(distanceInMetres));
 }

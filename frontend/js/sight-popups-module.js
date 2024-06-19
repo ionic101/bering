@@ -1,16 +1,17 @@
 import { buildPathToSight } from "./user-geo-module.js";
 
 export function spawnSightPopups() {
-    fetch('json/sights.json')
+    fetch('http://89.232.170.133:8000/sights')
       .then(response => {
         if (!response.ok) {
-          throw new Error('The sigts.json file could not be loaded');
+          throw new Error('The sights could not be loaded');
         }
         return response.json()
       })
       .then(sightData => {
-        for (let sightID in sightData) {
-          spawnSightPopup(sightID, sightData[sightID]);
+        for (let sightIndex in sightData) {
+          console.log(sightData[sightIndex]);
+          spawnSightPopup(sightData[sightIndex]);
         }
       });
 }
@@ -27,7 +28,7 @@ function getHtmlSightPopup(sightData) {
 }
 
 
-export function spawnSightPopup(sightID, sightData) {
+export function spawnSightPopup(sightData) {
     const popupSettings = {
       offset: 30
     };
@@ -35,7 +36,7 @@ export function spawnSightPopup(sightID, sightData) {
     const sightPopup = new mapboxgl.Popup(popupSettings).setHTML(getHtmlSightPopup(sightData));
 
     let sightMarker = document.createElement('div');
-    sightMarker.id = sightID;
+    sightMarker.id = sightData._id;
     sightMarker.className = 'marker';
     sightMarker.style.backgroundImage = `url(${sightData.img})`;
 
