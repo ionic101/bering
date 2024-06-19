@@ -1,11 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import https from "https";
+import fs from "fs";
+import cors from "cors";
 import sightsRoute from "./routes/sightsRoute.js";
 import pathsRoute from "./routes/pathsRoute.js";
 import routeRoute from "./routes/routeRoute.js";
-import cors from "cors";
-import userRoute from "./routes/userRoute.js";
 
 
 async function startServer() {
@@ -17,8 +18,13 @@ async function startServer() {
             console.log(error);
             return;
         });
-    
-    app.listen(PORT, () => {
+
+    var options = {
+        cert: fs.readFileSync("/etc/letsencrypt/-blah-/fullchain.pem"),
+        key: fs.readFileSync("/etc/letsencrypt/-blah-/privkey.pem")
+    };
+
+    https.createServer(options, app).listen(PORT, () => {
         console.log(`Server started on port ${PORT}`)
     });
 }
@@ -35,6 +41,5 @@ app.use(cors());
 app.use('/sights', sightsRoute);
 app.use('/paths', pathsRoute);
 app.use('/route', routeRoute);
-app.use('/user', userRoute);
 
 startServer();
